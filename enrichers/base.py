@@ -144,7 +144,14 @@ class BaseEnricher(ABC):
                 if attempt < max_retries:
                     retry_after = _parse_retry_after(resp.headers.get("Retry-After"))
                     if retry_after is not None:
-                        time.sleep(retry_after)
+                        # Cap so a misbehaving server can't pause us for hours.
+                        capped = min(retry_after, 60.0)
+                        if capped < retry_after:
+                            logger.warning(
+                                "%s: server asked us to wait %.0fs; capping at %.0fs",
+                                self.name, retry_after, capped,
+                            )
+                        time.sleep(capped)
                     else:
                         _sleep_backoff(attempt, base=2.0)
                     continue

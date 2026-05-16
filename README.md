@@ -105,6 +105,26 @@ python rich_iocs.py --input hunt.csv \
 
 Each source runs in its own thread with its own token bucket — VT's 4-rpm spacing **does not** block AbuseIPDB or OTX. Total runtime is bounded by the slowest enabled lane.
 
+> **Heads up — VT free tier dominates wall-clock time.** At 4 rpm, 50 IOCs through VirusTotal takes ~12 minutes; everything else finishes in seconds. The tool logs per-IOC progress (see below), so you can confirm the workers are alive while VT grinds through its queue. If you have a paid VT key, bump `--vt-rpm` accordingly.
+
+### What a live run looks like
+
+Each source logs per-IOC progress so slow lanes (notably VT free at 4 rpm) don't look like a hang:
+
+```
+🛡️ info     [vt] starting 7 IOC(s) @ 4 rpm
+🛡️ info     [greynoise] starting 2 IOC(s) @ 30 rpm
+🛡️ info     [greynoise] 1/2 ip 8.8.8.8  classification=benign
+🛡️ info     [otx] 1/7 ip 8.8.8.8  pulses=0
+🛡️ info     [abuseipdb] 1/2 ip 8.8.8.8  score=0 reports=0
+🛡️ info     [vt] 1/7 ip 8.8.8.8  clean
+...
+🛡️ info     [greynoise] done: ok=2 not_found=0 error=0 skipped=0
+🛡️ info     [vt] done: ok=7 not_found=0 error=0 skipped=0
+```
+
+Errors log at WARNING level with the source, IOC, and reason — so a flapping API never disappears silently into the report.
+
 ### Extend the skip-list
 
 The built-in lists drop private/loopback IPs and common enterprise domains (`microsoft.com`, `google.com`, `cloudflare.com`, ...). Add your own:
@@ -184,7 +204,7 @@ Intentionally **no cache** — every run hits the APIs fresh. The per-IOC JSON f
 | Condition | Behavior |
 | --- | --- |
 | 401 / 403 from any source | That source is disabled for the rest of the run; final log line names every disabled source. |
-| 429 (rate-limited) | Honor `Retry-After`, else exponential backoff (2s → 4s → 8s), max 3 retries. |
+| 429 (rate-limited) | Honor `Retry-After` (capped at 60s so a misbehaving server can't pause the run), else exponential backoff (2s → 4s → 8s), max 3 retries. |
 | 5xx / connection timeout | Exponential backoff (1s → 2s → 4s), max 3 retries. |
 | Anything else | Per-IOC result marked `status="error"`, reason recorded in `enrichment_errors` and `out/report.md`. |
 

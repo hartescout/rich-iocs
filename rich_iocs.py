@@ -317,11 +317,67 @@ def _run_source(
     enricher: BaseEnricher,
     iocs_for_source: list[IOC],
 ) -> list[EnrichmentResult]:
-    """Iterate IOCs for one source. Exceptions are already caught in query_safe."""
+    """Iterate IOCs for one source. Exceptions are already caught in query_safe.
+
+    Logs per-IOC progress so the user sees ticks while slow-rate-limited sources
+    (e.g. VirusTotal free at 4 rpm) work through their queue.
+    """
+    name = enricher.name
+    total = len(iocs_for_source)
+    if total == 0:
+        return []
+
+    logger.info("  [%s] starting %d IOC(s) @ %d rpm", name, total, enricher.rpm)
     results: list[EnrichmentResult] = []
-    for ioc in iocs_for_source:
-        results.append(enricher.query_safe(ioc.value, ioc.type))
+    counts = {"ok": 0, "not_found": 0, "error": 0, "skipped": 0}
+
+    for i, ioc in enumerate(iocs_for_source, 1):
+        r = enricher.query_safe(ioc.value, ioc.type)
+        results.append(r)
+        counts[r.status] = counts.get(r.status, 0) + 1
+        short = _truncate(ioc.value)
+        if r.status == "ok":
+            hit = _hit_summary(r)
+            logger.info("  [%s] %d/%d %s %s%s",
+                        name, i, total, ioc.type, short,
+                        f"  {hit}" if hit else "")
+        elif r.status == "error":
+            logger.warning("  [%s] %d/%d %s %s  error: %s",
+                           name, i, total, ioc.type, short, r.error)
+        else:
+            logger.debug("  [%s] %d/%d %s %s  (%s)",
+                         name, i, total, ioc.type, short, r.status)
+
+    logger.info("  [%s] done: ok=%d not_found=%d error=%d skipped=%d",
+                name, counts["ok"], counts["not_found"],
+                counts["error"], counts["skipped"])
     return results
+
+
+def _truncate(value: str, max_len: int = 56) -> str:
+    return value if len(value) <= max_len else value[: max_len - 1] + "…"
+
+
+def _hit_summary(r: EnrichmentResult) -> str:
+    """One-line hit summary for INFO-level logging."""
+    s = r.summary or {}
+    src = r.source
+    if src == "vt":
+        m = s.get("vt_malicious")
+        return f"malicious={m}" if m else "clean"
+    if src == "abuseipdb":
+        return f"score={s.get('abuseipdb_score', 0)} reports={s.get('abuseipdb_reports', 0)}"
+    if src == "otx":
+        return f"pulses={s.get('otx_pulse_count', 0)}"
+    if src == "greynoise":
+        return f"classification={s.get('gn_classification') or '-'}"
+    if src == "mb":
+        return f"sig={s.get('mb_signature') or '-'}"
+    if src == "urlhaus":
+        return f"threat={s.get('urlhaus_threat') or '-'}"
+    if src == "threatfox":
+        return f"malware={s.get('threatfox_malware') or '-'} hits={s.get('threatfox_hits', 0)}"
+    return ""
 
 
 # --------------------------------------------------------------------------- #
