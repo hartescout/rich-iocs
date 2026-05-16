@@ -1,0 +1,5 @@
+hostname,src_ip,sha256,url,note
+DC01,8.8.8.8,e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855,hxxps://example[.]com/x.exe,google dns + empty-file sha256
+WS-01,192.168.1.50,44d88612fea8a8f36de82e1278abb02f,http://example.org/,private ip + eicar md5
+SERVER-X,1.1.1[.]1,,,refanged cloudflare ip
+LAPTOP-7,,da39a3ee5e6b4b0d3255bfef95601890afd80709,,sha1 of empty file

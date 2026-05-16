@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="804" height="618" viewBox="0 0 804 618" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14">
+<rect x="0" y="0" width="804" height="618" rx="8" ry="8" fill="#1e1e2e"/>
+<rect x="0" y="0" width="804" height="30" rx="8" ry="8" fill="#11111b"/>
+<rect x="0" y="22" width="804" height="8" fill="#11111b"/>
+<circle cx="16" cy="15" r="6" fill="#f38ba8"/>
+<circle cx="34" cy="15" r="6" fill="#f9e2af"/>
+<circle cx="52" cy="15" r="6" fill="#a6e3a1"/>
+<text x="402" y="20" fill="#bac2de" text-anchor="middle" font-size="12">python rich_iocs.py --input test_iocs.csv --dry-run</text>
+<text x="16" y="48" xml:space="preserve"><tspan fill="#89b4fa">╔══════════════════════════════════════════════════════════════════╗</tspan></text>
+<text x="16" y="66" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#89b4fa">                                                                  </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="84" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#f5c2e7">    ██████╗ ██╗ ██████╗██╗  ██╗    ██╗ ██████╗  ██████╗███████╗ </tspan><tspan fill="#cdd6f4">  </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="102" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#eba0ac">    ██╔══██╗██║██╔════╝██║  ██║    ██║██╔═══██╗██╔════╝██╔════╝ </tspan><tspan fill="#cdd6f4">  </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="120" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#fab387">    ██████╔╝██║██║     ███████║    ██║██║   ██║██║     ███████╗ </tspan><tspan fill="#cdd6f4">  </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="138" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#94e2d5">    ██╔══██╗██║██║     ██╔══██║    ██║██║   ██║██║     ╚════██║ </tspan><tspan fill="#cdd6f4">  </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="156" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#89b4fa">    ██║  ██║██║╚██████╗██║  ██║    ██║╚██████╔╝╚██████╗███████║ </tspan><tspan fill="#cdd6f4">  </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="174" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#89dceb">    ╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝    ╚═╝ ╚═════╝ ╚═════╝╚══════╝ </tspan><tspan fill="#cdd6f4">   </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="192" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#89b4fa">                                                                  </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="210" xml:space="preserve"><tspan fill="#89b4fa">╠══════════════════════════════════════════════════════════════════╣</tspan></text>
+<text x="16" y="228" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#cdd6f4">       </tspan><tspan fill="#fab387">🛡️  threat-intel enrichment for hunt CSVs  🔍🧪🦠⚡</tspan><tspan fill="#cdd6f4">        </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="246" xml:space="preserve"><tspan fill="#89b4fa">║</tspan><tspan fill="#cdd6f4"> </tspan><tspan fill="#f5c2e7">🌐 VirusTotal · AbuseIPDB · OTX · GreyNoise · abuse.ch suite 🌐</tspan><tspan fill="#cdd6f4">  </tspan><tspan fill="#89b4fa">║</tspan></text>
+<text x="16" y="264" xml:space="preserve"><tspan fill="#89b4fa">╚══════════════════════════════════════════════════════════════════╝</tspan></text>
+<text x="16" y="282" xml:space="preserve"></text>
+<text x="16" y="300" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4"> Reading /Users/ark/Projects/Research/Hunting/rich_iocs/test_iocs.csv</tspan></text>
+<text x="16" y="318" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4"> Loaded 4 rows, 5 columns</tspan></text>
+<text x="16" y="336" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4"> Detected 7 unique IOCs (from 8 raw matches)</tspan></text>
+<text x="16" y="354" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4">   ip      2</tspan></text>
+<text x="16" y="372" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4">   md5     1</tspan></text>
+<text x="16" y="390" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4">   sha1    1</tspan></text>
+<text x="16" y="408" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4">   sha256  1</tspan></text>
+<text x="16" y="426" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4">   url     2</tspan></text>
+<text x="16" y="444" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4"> Filtered: 1 private IPs, 0 allowlisted domains, 0 junk TLDs</tspan></text>
+<text x="16" y="462" xml:space="preserve"><tspan fill="#cdd6f4">🛡️ </tspan><tspan fill="#94e2d5">info   </tspan><tspan fill="#cdd6f4"> Dry-run: skipping API calls. Detected IOCs:</tspan></text>
+<text x="16" y="480" xml:space="preserve"><tspan fill="#cdd6f4">  ip      8.8.8.8  (rows: 0)</tspan></text>
+<text x="16" y="498" xml:space="preserve"><tspan fill="#cdd6f4">  sha256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  (rows: 0)</tspan></text>
+<text x="16" y="516" xml:space="preserve"><tspan fill="#cdd6f4">  url     https://example.com/x.exe  (rows: 0)</tspan></text>
+<text x="16" y="534" xml:space="preserve"><tspan fill="#cdd6f4">  md5     44d88612fea8a8f36de82e1278abb02f  (rows: 1)</tspan></text>
+<text x="16" y="552" xml:space="preserve"><tspan fill="#cdd6f4">  url     http://example.org  (rows: 1)</tspan></text>
+<text x="16" y="570" xml:space="preserve"><tspan fill="#cdd6f4">  ip      1.1.1.1  (rows: 2)</tspan></text>
+<text x="16" y="588" xml:space="preserve"><tspan fill="#cdd6f4">  sha1    da39a3ee5e6b4b0d3255bfef95601890afd80709  (rows: 3)</tspan></text>
+</svg>
