@@ -265,5 +265,11 @@ Edit `scripts/regen_screenshots.py` (titles, terminal column widths) if you want
 ## Guardrails
 
 - **AI drafts, humans run.** Every IOC enrichment is suggestive, not authoritative. Always corroborate with at least one additional source before acting on findings.
-- API keys live in `.env` — never commit them. The shipped `.gitignore` (if you add one) should exclude `.env` and `out/`.
+- API keys live in `.env` — never commit them. The shipped `.gitignore` excludes `.env` and `out/`.
 - Be mindful of free-tier quotas. VT free tier is 4 req/min and 500 req/day — `--dry-run` is your friend before kicking off a 5,000-row CSV.
+
+## License
+
+[**PolyForm Noncommercial 1.0.0**](LICENSE.md) — free for personal use, research, education, hobby projects, and any other non-commercial purpose, including use by nonprofits, charities, and government agencies. Commercial use requires a separate license from the author.
+
+PolyForm Noncommercial is **source-available**, not OSI "open source." See [polyformproject.org/licenses/noncommercial/1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0) for the full text.
